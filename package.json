@@ -8,5 +8,8 @@
     "email": "leandro.sbrissa@hotmail.com",
     "url": "https://github.com/leguass7"
   },
-	"repository": "github:leguass7/action-electron-forge"
+	"repository": "github:leguass7/action-electron-forge",
+  "dependencies": {},
+	"peerDependencies": {},
+  "devDependencies": {}
 }
