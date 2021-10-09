@@ -1,6 +1,6 @@
 const { execSync } = require("child_process");
 const { existsSync } = require("fs");
-const { join } = require("path");
+const { join, dirname } = require("path");
 
 /** Logs to the console */
 const log = (msg) => console.log(`\n${msg}`); // eslint-disable-line no-console
@@ -48,21 +48,15 @@ const getInput = (name, required) => {
 	return value;
 };
 
-/** Installs NPM dependencies and builds/releases the Electron app */
+/** Installs dependencies and builds/releases the Electron app */
 const runAction = () => {
 	// const platform = getPlatform();
 	const release = getInput("release", true) === "true";
 	const pkgRoot = '.'
-	// const buildScriptName = getInput("build_script_name", true);
-	// const skipBuild = getInput("skip_build") === "true";
-
-	// TODO: Deprecated option, remove in v2.0. `electron-builder` always requires a `package.json` in
-	// the same directory as the Electron app, so the `package_root` option should be used instead
-	// const appRoot = getInput("app_root") || pkgRoot;
 
 	const pkgJsonPath = join(pkgRoot, "package.json");
 
-	log(`Will run NPM/YARN commands in directory: "${pkgJsonPath}"`);
+	log(`Will run YARN commands in directory: ${getPlatform()} -> "${dirname(pkgJsonPath)}"`);
 
 	// Make sure `package.json` file exists
 	if (!existsSync(pkgJsonPath)) {
@@ -83,8 +77,7 @@ const runAction = () => {
 		log(`Building${release ? " and releasing" : ""} the Electron app…`);
 		run(`npx electron-forge publish`, pkgRoot);
 	} catch(err) {
-		log(`Failed with an error, probably the "it already exists" one`)
-		log(err.message)
+		exit(err.message)
 	}
 };
 
