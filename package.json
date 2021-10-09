@@ -1,0 +1,12 @@
+{
+  "name": "action-electron-forge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Leandro Sbrissa",
+    "email": "leandro.sbrissa@hotmail.com",
+    "url": "https://github.com/leguass7"
+  },
+	"repository": "github:leguass7/action-electron-forge"
+}

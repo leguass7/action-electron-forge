@@ -1,0 +1,20 @@
+name: Electron Builder Action
+author: Leandro Sbrissa
+description: GitHub Action for building and releasing Electron apps
+
+inputs:
+  github_token:
+    description: GitHub authentication token
+    required: true
+  release:
+    description: Whether the app should be released after a successful build
+    required: false
+    default: false
+
+runs:
+  using: node12
+  main: index.js
+
+branding:
+  icon: upload-cloud
+  color: blue
