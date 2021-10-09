@@ -71,6 +71,7 @@ const runAction = () => {
 
 	// Copy "github_token" input variable to "GH_TOKEN" env variable (required by `electron-builder`)
 	setEnv("GH_TOKEN", getInput("github_token", true));
+	setEnv("GITHUB_TOKEN", getInput("github_token", true));
 
 	// Disable console advertisements during install phase
 	setEnv("ADBLOCK", true);
